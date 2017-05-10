@@ -33,6 +33,7 @@ mkdir -p ~/.vim/bundle
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
 PATH="$HOME/.linuxbrew/bin:$PATH"
 echo 'export PATH="$HOME/.linuxbrew/bin:$PATH"' >>~/.zshrc
+dnf install direnv
 
 #Mac
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
