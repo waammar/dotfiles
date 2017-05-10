@@ -51,7 +51,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git fedora sudo npm mvn per-directory-history z docker docker-compose dnf tmux tmuxinator python git-flow git-extras)
+plugins=(git colored-man-pages fedora sudo npm mvn per-directory-history z docker docker-compose dnf tmux tmuxinator python git-flow git-extras)
 plugins+=(k alias-tips zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
@@ -93,3 +93,23 @@ SAVEHIST=999999999
 source $HOME/.wrapper_fzf.sh
 GOPATH="/home/echaouchna/go"
 export EDITOR=vim
+export CATALINA_HOME=$HOME/workspace/cloudwatt/tools/apache-tomcat-7.0.77
+export JBILLING_WEBAPPS=$CATALINA_HOME/webapps/jbilling
+export JBILLING_HOME=$HOME/workspace/cloudwatt/applications/jbilling/conf
+export MAVEN_OPTS="-Xmx2G -XX:MaxPermSize=512m"
+export HORIZON_HOME="/home/echaouchna/workspace/cloudwatt/applications/horizon"
+
+function cless () {
+    pygmentize -f terminal "$1" | less -R
+}
+
+export NVM_DIR="$HOME/.nvm"
+. "/home/echaouchna/.linuxbrew/opt/nvm/nvm.sh"
+eval "$(direnv hook zsh)"
+show_virtual_env() {
+  if [ -n "$VIRTUAL_ENV" ]; then
+    echo "($(basename $VIRTUAL_ENV))"
+  fi
+}
+
+PS1='$(show_virtual_env)'$PS1
