@@ -91,7 +91,9 @@ export XDG_DATA_DIRS="/home/echaouchna/.linuxbrew/share:$XDG_DATA_DIRS"
 HISTSIZE=999999999
 SAVEHIST=999999999
 source $HOME/.wrapper_fzf.sh
-GOPATH="/home/echaouchna/go"
+export GOPATH="/home/echaouchna/go"
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:$GOBIN
 export EDITOR=vim
 export CATALINA_HOME=$HOME/workspace/cloudwatt/tools/apache-tomcat-7.0.77
 export JBILLING_WEBAPPS=$CATALINA_HOME/webapps/jbilling
