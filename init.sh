@@ -38,10 +38,30 @@ dnf install direnv
 #Mac
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-brew install aria2 gcc go httpie micro openssl youtube-dl
+brew install aria2 gcc go httpie micro openssl youtube-dl nvm
 
 
 
 cd && git clone https://github.com/gpakosz/.tmux.git
 ln -s -f .tmux/.tmux.conf
 cp .tmux/.tmux.conf.local .
+
+
+#==> Next steps:
+#- Install the Linuxbrew dependencies:
+#  Debian, Ubuntu, etc.
+#    sudo apt-get install build-essential
+#  Fedora, Red Hat, CentOS, etc.
+#    sudo yum groupinstall 'Development Tools'
+#  See http://linuxbrew.sh/#dependencies for more information.
+#- Add Linuxbrew to your ~/.bash_profile by running
+#    echo 'export PATH="/home/echaouchna/.linuxbrew/bin:$PATH"' >>~/.bash_profile
+#    echo 'export MANPATH="/home/echaouchna/.linuxbrew/share/man:$MANPATH"' >>~/.bash_profile
+#    echo 'export INFOPATH="/home/echaouchna/.linuxbrew/share/info:$INFOPATH"' >>~/.bash_profile
+#- Add Linuxbrew to your PATH
+#    PATH="$HOME/.linuxbrew/bin:$PATH"
+#- We recommend that you install GCC by running:
+#    brew install gcc
+#- Run `brew help` to get started
+#- Further documentation: 
+#    http://docs.brew.sh

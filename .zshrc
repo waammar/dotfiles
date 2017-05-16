@@ -90,7 +90,7 @@ export PATH="$HOME/.linuxbrew/bin:$PATH"
 export XDG_DATA_DIRS="/home/echaouchna/.linuxbrew/share:$XDG_DATA_DIRS"
 HISTSIZE=999999999
 SAVEHIST=999999999
-source $HOME/.wrapper_fzf.sh
+source $HOME/.ssh_hosts/.wrapper_fzf.sh
 export GOPATH="/home/echaouchna/go"
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
@@ -108,6 +108,7 @@ function cless () {
 export NVM_DIR="$HOME/.nvm"
 . "/home/echaouchna/.linuxbrew/opt/nvm/nvm.sh"
 eval "$(direnv hook zsh)"
+
 show_virtual_env() {
   if [ -n "$VIRTUAL_ENV" ]; then
     echo "($(basename $VIRTUAL_ENV))"
