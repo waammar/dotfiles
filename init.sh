@@ -8,6 +8,7 @@ dnfInstall() {
     # PATH="$HOME/.linuxbrew/bin:$PATH"
     # echo 'export PATH="$HOME/.linuxbrew/bin:$PATH"' >>~/.zshrc
     dnf install direnv
+    dnf install tmux
 }
 
 if [[ "$OSTYPE" == "linux-gnu" ]]
@@ -20,7 +21,7 @@ then
 elif [[ "$OSTYPE" == "darwin"* ]]
 then
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    brew install aria2 gcc go httpie micro openssl youtube-dl nvm
+    brew install aria2 gcc go httpie micro openssl youtube-dl nvm tmux
 fi
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
@@ -40,9 +41,9 @@ ln -s -f ${HOME}/.vimrc $(pwd)/.vimrc
 
 vim +silent +VimEnter +PlugInstall +qall
 
-cd && git clone https://github.com/gpakosz/.tmux.git
-ln -s -f .tmux/.tmux.conf
-cp .tmux/.tmux.conf.local .
+git clone https://github.com/gpakosz/.tmux.git ~/.tmux
+ln -s -f ~/.tmux/.tmux.conf ~/.tmux.conf
+cp .tmux.conf.local ${HOME}/.tmux.conf.local
 
 
 #==> Next steps:
