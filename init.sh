@@ -38,6 +38,8 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.c
 
 ln -s -f ${HOME}/.vimrc $(pwd)/.vimrc
 
+vim +silent +VimEnter +PlugInstall +qall
+
 cd && git clone https://github.com/gpakosz/.tmux.git
 ln -s -f .tmux/.tmux.conf
 cp .tmux/.tmux.conf.local .
