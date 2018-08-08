@@ -11,21 +11,22 @@ dnfInstall() {
     dnf install tmux
 }
 
-if [[ "$OSTYPE" == "linux-gnu" ]]
+if [ "$OSTYPE" = "linux-gnu" ]
 then
     which dnf
     if [[ $? -eq 0 ]]
     then
         dnfInstall
     fi
-elif [[ "$OSTYPE" == "darwin"* ]]
+elif [ "$OSTYPE" = "darwin"* ]
 then
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     brew install aria2 gcc go httpie micro openssl youtube-dl nvm tmux direnv
 fi
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-ln -s -f ${HOME}/.zshrc $(pwd)/.zshrc
+mv ${HOME}/.zshrc ${HOME}/.zshrc.bak
+ln -sf $(pwd)/.zshrc ${HOME}/.zshrc
 
 git clone https://github.com/djui/alias-tips.git ~/.oh-my-zsh/custom/plugins/alias-tips
 git clone https://github.com/supercrabtree/k ~/.oh-my-zsh/custom/plugins/k
@@ -37,13 +38,15 @@ git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh
 
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-ln -s -f ${HOME}/.vimrc $(pwd)/.vimrc
+mv ${HOME}/.vimrc ${HOME}/.vimrc.bak
+ln -sf $(pwd)/.vimrc ${HOME}/.vimrc
 
 vim +silent +VimEnter +PlugInstall +qall
 
 git clone https://github.com/gpakosz/.tmux.git ~/.tmux
 ln -s -f ~/.tmux/.tmux.conf ~/.tmux.conf
-cp .tmux.conf.local ${HOME}/.tmux.conf.local
+mv ${HOME}/.tmux.conf.local ${HOME}/.tmux.conf.local.bak
+ln -sf $(pwd)/.tmux.conf.local ${HOME}/.tmux.conf.local
 
 
 #==> Next steps:
