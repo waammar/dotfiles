@@ -1,5 +1,7 @@
 #/bin/bash
 
+DATE=$(date '+%Y-%m-%d_%H:%M:%S:%N')
+
 dnfInstall() {
     dnf install zsh
     dnf install vim
@@ -9,6 +11,11 @@ dnfInstall() {
     # echo 'export PATH="$HOME/.linuxbrew/bin:$PATH"' >>~/.zshrc
     dnf install direnv
     dnf install tmux
+}
+
+backup() {
+    file=$1
+    [ -f $file ] && cp -L $file ${file}.bak.${DATE} && rm -f $file
 }
 
 if [ "$OSTYPE" = "linux-gnu" ]
@@ -25,7 +32,7 @@ then
 fi
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-mv ${HOME}/.zshrc ${HOME}/.zshrc.bak
+backup ${HOME}/.zshrc
 ln -sf $(pwd)/.zshrc ${HOME}/.zshrc
 
 git clone https://github.com/djui/alias-tips.git ~/.oh-my-zsh/custom/plugins/alias-tips
@@ -38,14 +45,14 @@ git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh
 
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-mv ${HOME}/.vimrc ${HOME}/.vimrc.bak
+backup ${HOME}/.vimrc
 ln -sf $(pwd)/.vimrc ${HOME}/.vimrc
 
 vim +silent +VimEnter +PlugInstall +qall
 
 git clone https://github.com/gpakosz/.tmux.git ~/.tmux
 ln -s -f ~/.tmux/.tmux.conf ~/.tmux.conf
-mv ${HOME}/.tmux.conf.local ${HOME}/.tmux.conf.local.bak
+backup ${HOME}/.tmux.conf.local
 ln -sf $(pwd)/.tmux.conf.local ${HOME}/.tmux.conf.local
 
 
