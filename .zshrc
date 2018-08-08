@@ -170,3 +170,4 @@ KUBE_PS1_CTX_COLOR='magenta'
 export PATH=$PATH:/home/echaouchna/.cargo/bin
 alias watch='watch '
 export PATH=$PATH:$GOPATH/bin
+eval "$(direnv hook zsh)"

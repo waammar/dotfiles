@@ -21,7 +21,7 @@ then
 elif [[ "$OSTYPE" == "darwin"* ]]
 then
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    brew install aria2 gcc go httpie micro openssl youtube-dl nvm tmux
+    brew install aria2 gcc go httpie micro openssl youtube-dl nvm tmux direnv
 fi
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
