@@ -1,16 +1,22 @@
-#/bin/bash
+#!/bin/bash
 
 DATE=$(date '+%Y-%m-%d_%H:%M:%S:%N')
 
 dnfInstall() {
-    dnf install zsh
-    dnf install vim
-    dnf install util-linux-user
+    sudo dnf install -y zsh vim util-linux-user direnv tmux
     # ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
     # PATH="$HOME/.linuxbrew/bin:$PATH"
     # echo 'export PATH="$HOME/.linuxbrew/bin:$PATH"' >>~/.zshrc
-    dnf install direnv
-    dnf install tmux
+}
+
+aptInstall() {
+    sudo apt update
+    sudo apt install -y zsh vim direnv tmux
+}
+
+pacmanInstall() {
+    # TODO: add commands
+    return 0
 }
 
 backup() {
@@ -18,22 +24,32 @@ backup() {
     [ -f $file ] && cp -L $file ${file}.bak.${DATE} && rm -f $file
 }
 
+os=''
+
 if [ "$OSTYPE" = "linux-gnu" ]
 then
-    which dnf
-    if [[ $? -eq 0 ]]
-    then
-        dnfInstall
-    fi
+    os=$(tr '[:upper:]' '[:lower:]' <<< $(lsb_release -i | awk '{print $NF}'))
+    which dnf && dnfInstall
+    which apt-get && aptInstall
+    which pacman && pacmanInstall
 elif [ "$OSTYPE" = "darwin"* ]
 then
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     brew install aria2 gcc go httpie micro openssl youtube-dl nvm tmux direnv
+    os=osx
 fi
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+os_plugin='unknown_os'
+if [[ -d ${HOME}/.oh-my-zsh/plugins/${os} ]]
+then
+    os_plugin=$os
+else
+    os_plugin=''
+fi
 backup ${HOME}/.zshrc
-ln -sf $(pwd)/.zshrc ${HOME}/.zshrc
+sed "s/__os_plugin__/${os_plugin}/" .zshrc > .zshrc_${os_plugin}
+ln -sf $(pwd)/.zshrc_${os_plugin} ${HOME}/.zshrc
 
 git clone https://github.com/djui/alias-tips.git ~/.oh-my-zsh/custom/plugins/alias-tips
 git clone https://github.com/supercrabtree/k ~/.oh-my-zsh/custom/plugins/k
