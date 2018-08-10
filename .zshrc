@@ -158,6 +158,10 @@ function cless () {
    pygmentize -f terminal "$1" | less -R
 }
 
+function ccat () {
+   pygmentize -f terminal "$1"
+}
+
 source ~/.oh-my-zsh/custom/plugins/kube-ps1/kube-ps1.sh
 PROMPT='$(kube_ps1)'$PROMPT
 #PROMPT=$PROMPT'$(kube_ps1)'
