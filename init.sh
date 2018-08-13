@@ -52,7 +52,7 @@ sed "s/__os_plugin__/${os_plugin}/" .zshrc > .zshrc_${os_plugin}
 ln -sf $(pwd)/.zshrc_${os_plugin} ${HOME}/.zshrc
 
 git clone https://github.com/djui/alias-tips.git ~/.oh-my-zsh/custom/plugins/alias-tips
-git clone https://github.com/supercrabtree/k ~/.oh-my-zsh/custom/plugins/k
+#git clone https://github.com/supercrabtree/k ~/.oh-my-zsh/custom/plugins/k
 git clone git@github.com:jonmosco/kube-ps1.git ~/.oh-my-zsh/custom/plugins/kube-ps1
 git clone https://github.com/zsh-users/zsh-completions ~/.oh-my-zsh/custom/plugins/zsh-completions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
