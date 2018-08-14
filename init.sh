@@ -35,7 +35,8 @@ then
 elif [ "$OSTYPE" = "darwin"* ]
 then
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    brew install aria2 gcc go httpie micro openssl youtube-dl nvm tmux direnv
+    brew install aria2 gcc go httpie micro openssl youtube-dl nvm tmux direnv kubernetes-cli
+    brew link --overwrite kubernetes-cli
     os=osx
 fi
 
@@ -52,11 +53,11 @@ sed "s/__os_plugin__/${os_plugin}/" .zshrc > .zshrc_${os_plugin}
 ln -sf $(pwd)/.zshrc_${os_plugin} ${HOME}/.zshrc
 
 git clone https://github.com/djui/alias-tips.git ~/.oh-my-zsh/custom/plugins/alias-tips
-#git clone https://github.com/supercrabtree/k ~/.oh-my-zsh/custom/plugins/k
-git clone git@github.com:jonmosco/kube-ps1.git ~/.oh-my-zsh/custom/plugins/kube-ps1
-git clone https://github.com/zsh-users/zsh-completions ~/.oh-my-zsh/custom/plugins/zsh-completions
+#git clone https://github.com/supercrabtree/k.git ~/.oh-my-zsh/custom/plugins/k
+git clone https://github.com/jonmosco/kube-ps1.git ~/.oh-my-zsh/custom/plugins/kube-ps1
+git clone https://github.com/zsh-users/zsh-completions.git ~/.oh-my-zsh/custom/plugins/zsh-completions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
-git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
 
 
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
