@@ -11,7 +11,7 @@ dnfInstall() {
 
 aptInstall() {
     sudo apt update
-    sudo apt install -y zsh vim direnv tmux
+    sudo apt install -y zsh vim direnv tmux fonts-powerline
 }
 
 pacmanInstall() {
