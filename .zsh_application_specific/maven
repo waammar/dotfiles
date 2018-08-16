@@ -1,0 +1,1 @@
+export PATH=$PATH:~/workspace/tools/apache-maven-3.5.3/bin

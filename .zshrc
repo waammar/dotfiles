@@ -118,24 +118,9 @@ fi
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 export PATH=$PATH:/snap/bin
-export JAVA_HOME="/usr/lib/jvm/java-8-oracle"
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-export NEXUS_USER=nabechao
-export NEXUS_PASSWORD=Digitas2017
-export NEXUS_EMAIL=nabil.echaouch@digitas.com
-export NEXUS_PRIVATE_REPO='https://hub.sandbox.pfex.digitas.fr/repository/red-private-npm/'
-export NEXUS_SCOPE=@red
-export PATH=$PATH:/home/echaouchna/workspace/tools/Rambox-0.5.16
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export PATH=$PATH:/home/echaouchna/workspace/tools/apache-maven-3.5.3/bin
-export PATH=$PATH:/home/echaouchna/workspace/digitas/dev-tools
 [[ $TMUX = "" ]] && export TERM="xterm-256color"
-GOPATH="/home/echaouchna/go"
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/vault vault
@@ -162,16 +147,6 @@ function ccat () {
    pygmentize -f terminal "$1"
 }
 
-source ~/.oh-my-zsh/custom/plugins/kube-ps1/kube-ps1.sh
-PROMPT='$(kube_ps1)'$PROMPT
-#PROMPT=$PROMPT'$(kube_ps1)'
-KUBE_PS1_SUFFIX=']'
-KUBE_PS1_PREFIX='['
-KUBE_PS1_SEPARATOR=''
-KUBE_PS1_SYMBOL_USE_IMG='true'
-KUBE_PS1_BG_COLOR='black'
-KUBE_PS1_CTX_COLOR='magenta'
-export PATH=$PATH:/home/echaouchna/.cargo/bin
 alias watch='watch '
-export PATH=$PATH:$GOPATH/bin
-eval "$(direnv hook zsh)"
+
+for f in ~/.zsh_application_specific/*; do source $f; done

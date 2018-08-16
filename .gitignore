@@ -1,2 +1,10 @@
 .history
 .zshrc_*
+.zsh_application_specific/
+!.zsh_application_specific/go
+!.zsh_application_specific/kube_ps1
+!.zsh_application_specific/nvm
+!.zsh_application_specific/rust
+!.zsh_application_specific/direnv
+!.zsh_application_specific/java
+!.zsh_application_specific/maven

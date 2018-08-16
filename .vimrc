@@ -1,6 +1,6 @@
 " vim: set foldmethod=marker nomodeline:
 " ============================================================================
-" .vimrc of echaouchna Choi {{{
+" .vimrc of echaouchna {{{
 " ============================================================================
 
 " Vim 8 defaults

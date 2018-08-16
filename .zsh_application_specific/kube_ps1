@@ -1,0 +1,9 @@
+source ~/.oh-my-zsh/custom/plugins/kube-ps1/kube-ps1.sh
+PROMPT='$(kube_ps1)'$PROMPT
+#PROMPT=$PROMPT'$(kube_ps1)'
+KUBE_PS1_SUFFIX=']'
+KUBE_PS1_PREFIX='['
+KUBE_PS1_SEPARATOR=''
+KUBE_PS1_SYMBOL_USE_IMG='true'
+KUBE_PS1_BG_COLOR='black'
+KUBE_PS1_CTX_COLOR='magenta'
