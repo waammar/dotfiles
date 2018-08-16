@@ -140,11 +140,23 @@ setopt HIST_SAVE_NO_DUPS         # Don't write duplicate entries in the history 
 setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
 
 function cless () {
-   pygmentize -f terminal "$1" | less -R
+    pygmentize -f terminal "$1" | less -R
 }
 
 function ccat () {
-   pygmentize -f terminal "$1"
+    pygmentize -f terminal "$1"
+}
+
+function update_all () {
+    upgrade_oh_my_zsh
+    vim +silent +VimEnter +PlugUpgrade +qall
+    vim +silent +VimEnter +PlugUpdate +qall
+    for repo in $(find $ZSH_CUSTOM/plugins -maxdepth 2 -type d -name '.git' -exec dirname {} \;)
+    do
+      echo $repo
+      git --git-dir=${repo}/.git --work-tree=${repo} pull --rebase
+      echo "============================================="
+    done
 }
 
 alias watch='watch '
