@@ -8,3 +8,4 @@
 !.zsh_application_specific/direnv
 !.zsh_application_specific/java
 !.zsh_application_specific/maven
+!.zsh_application_specific/powerlevel9k
