@@ -35,7 +35,7 @@ then
 elif [ "$OSTYPE" = "darwin"* ]
 then
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    brew install aria2 gcc go httpie micro openssl youtube-dl nvm tmux direnv kubernetes-cli
+    brew install aria2 ctags gcc go httpie micro openssl youtube-dl nvm tmux direnv kubernetes-cli
     brew link --overwrite kubernetes-cli
     brew cask install iterm2
     os=osx

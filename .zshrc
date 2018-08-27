@@ -158,6 +158,12 @@ function update_all () {
       git --git-dir=${repo}/.git --work-tree=${repo} pull --rebase
       echo "============================================="
     done
+    for repo in $(find $ZSH_CUSTOM/themes -maxdepth 2 -type d -name '.git' -exec dirname {} \;)
+    do
+      echo $repo
+      git --git-dir=${repo}/.git --work-tree=${repo} pull --rebase
+      echo "============================================="
+    done
 }
 
 alias watch='watch '
