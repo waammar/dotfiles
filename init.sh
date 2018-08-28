@@ -1,6 +1,7 @@
 #!/bin/bash
 
 DATE=$(date '+%Y-%m-%d_%H:%M:%S:%N')
+BACKUP_DIR=${HOME}/.backup_zsh_dir
 
 dnfInstall() {
     sudo dnf install -y zsh vim util-linux-user direnv tmux
@@ -20,8 +21,9 @@ pacmanInstall() {
 }
 
 backup() {
-    file=$1
-    [ -f $file ] && cp -L $file ${file}.bak.${DATE} && rm -f $file
+    local file=$1
+    mkdir ${BACKUP_DIR} 2>/dev/null
+    [ -f $file ] && cp -L $file ${BACKUP_DIR}/$(basename ${file}).bak.${DATE} && rm -f $file
 }
 
 os=''
